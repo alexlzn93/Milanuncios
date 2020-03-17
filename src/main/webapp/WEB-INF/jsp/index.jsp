@@ -45,24 +45,12 @@
   <li class="nav-item">
     <a class="btn btn-primary btn-sm" role="button" href="/logueate">LOGUEATE</a>
   </li></ul>
-  	
-
    
-   
-  
- 
-
-  
-    
-
-  
-  
-  
-
-    
 </div>
 <br>
+<div class="container-fluid">
 <p  class="alert alert-dark" >ANUNCIOS PUBLICADOS</p>
+	
 	<table class="table">
 	
 		<thead>
@@ -105,6 +93,7 @@
 		</tbody>
 
 	</table>
+	
 	</div>
 
 </body>
