@@ -12,6 +12,8 @@
 <title>ANUNCIOS PUBLICADOS CON SU BUSQUEDA</title>
 </head>
 <body>
+<br>
+<div class="container-fluid">
 	<table class="table">
 		<thead>
 			<tr>
@@ -43,6 +45,7 @@
 		</tbody>
 
 	</table>
+	</div>
 
 
 <center><h1>${mensaje }</h1></center>

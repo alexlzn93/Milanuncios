@@ -18,8 +18,11 @@
  <h2> BIENVENIDO A MILANUNCIOS </h2>
 </div>
 </center>
-	
-  
+	<div class="container-fluid">
+ <div class="alert alert-success" role="alert">
+ ${mensajeBienvenido }
+</div> 
+  </div>
 <div class="container">				
 
 

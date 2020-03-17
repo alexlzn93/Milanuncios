@@ -27,6 +27,7 @@
     <label for="user">¿QUE ARTICULO DESEA BUSCAR?</label>
     <input type="text" class="form-control" id="palabra" name="palabra"  placeholder="Introduzca palabra clave">
   	</div>
+  
   	<button type="submit" class="btn btn-success" value="buscar" name="buscar" >BUSCAR </button>
  </form>
   </div><br>

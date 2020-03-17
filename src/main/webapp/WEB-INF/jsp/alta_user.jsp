@@ -12,6 +12,11 @@
 
 <%Date fecha= new Date(); %>
 <center><h2>MADRID A <%=fecha.toString() %>  </h2></center>
+	<div class="container-fluid">
+ <div class="alert alert-danger" role="alert">
+ ${mensajeAltaUser }
+</div> 
+  </div>
 <div class="container">
 <form role="form" method="get" action="/añadir_usuario">
 <div class="form-group">
@@ -29,7 +34,7 @@
 
   
   <button type="submit" class="btn btn-success" value="alta" name="alta" >REGISTRATE</button>
- <a href="usuario_registrado" class="btn btn-success" role="button" aria-pressed="true">ESTOY REGISTRADO</a>
+ 
   
 </form>
 
@@ -40,6 +45,7 @@
 	<center>
 		<a href="index" class="btn btn-primary btn-sm" role="button" aria-pressed="true">IR AL MENU</a>
 	</center>
+	
 </div>
 </body>
 </html>

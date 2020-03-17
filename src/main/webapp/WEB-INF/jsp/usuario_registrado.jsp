@@ -17,7 +17,9 @@
 <div class="form-group">
     <label for="user">Nombre :</label>
     <input type="text" class="form-control" id="username" name="user"  placeholder="Introduzca nombre">
-   
+   	
+   	<label for="user">Password :</label>
+   	<input type="password" class="form-control" id="password" name="password" placeholder="Introduzca contraseña">
     
   </div>
 

@@ -50,7 +50,7 @@ public class MiControlador {
 	@RequestMapping("/publicar_anuncio")
 	public String add_anuncio() {
 		//iria a alta_user.jsp
-		return "alta_user"; // 
+		return "nuevo_anuncio"; // 
 	}
 
 	// METODO QUE RECOJE LOS PARAMETROS PARA AGREGAR UN NUEVO ANUNCIO A LA PAGINA WEB
@@ -265,7 +265,7 @@ public class MiControlador {
 		}else{
 			model.addAttribute("lista_anuncios", anuncios_palabraClave);
 		}
-
+		
 		return "buscarAnuncioPalabraClave";
 	}
 	@RequestMapping("/totalAnunciosByCategoria")
@@ -339,14 +339,29 @@ public class MiControlador {
 		
 		return  "anunciosPrioridad";
 	}
-	
-	
-	
 
 	@GetMapping("/logueate")
 	public String logueate() {
-		return "logueate";
+		return "login";
 		
+	}
+	@PostMapping("/usuarioLogueado")
+	public String usuario_logueado(@RequestParam("user") String user, Model model) {
+		
+		Usuario usuario=usuarioservice.buscar_by_user(user);
+		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
+		String letrasMinusculasNombre=user.substring(1);
+		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
+		
+		if(usuario==null) {
+			model.addAttribute("mensajeAltaUser", "No existe el usuario introducido, registrate!!");
+			return "alta_user";
+		}else {
+			model.addAttribute("mensajeBienvenido", "Bienvenido de nuevo " + nombre);
+		}
+		
+		
+		return "logueate";
 	}
 	
 	
