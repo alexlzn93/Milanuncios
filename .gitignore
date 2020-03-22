@@ -29,3 +29,4 @@ build/
 
 ### VS Code ###
 .vscode/
+target/classes/META-INF/maven/com.example/Milanuncios/pom.properties
