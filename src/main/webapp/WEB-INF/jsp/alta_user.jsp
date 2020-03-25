@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Registro Usuario</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 </head>
 <%@ page import= "java.util.Date" %>
 <body>
@@ -18,25 +19,25 @@
 </div> 
   </div>
 <div class="container">
-<form role="form" method="get" action="/añadir_usuario">
+<form:form role="form" method="get" action="/add_usuario" modelAttribute="usuario">
 <div class="form-group">
     <label for="user">Nombre :</label>
-    <input type="text" class="form-control" id="user" name="user" value="${usuario.getUser()}" placeholder="Introduzca nombre"> <!-- value="${usuario.getUser()} lo que le pase al setAttribute ("usuario",objeto usuarioaux) -->
+    <form:input  class="form-control" id="user" path="user" value="${usuario.getUser()}" placeholder="Introduzca nombre"/>
   </div>
   <div class="form-group">
     <label for="email">Email :</label>
-    <input type="email" class="form-control" id="email" name="email"  value="${usuario.getEmail()}" placeholder="Introduzca email">
+    <form:input class="form-control" id="email" path="email"  value="${usuario.getEmail()}" placeholder="Introduzca email"/>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="password" name="password" value="${usuario.getPassword()}" placeholder="Introduzca contraseña">
+    <form:password class="form-control" id="password" path="password" value="${usuario.getPassword()}" placeholder="Introduzca contraseña"/>
   </div>
 
   
   <button type="submit" class="btn btn-success" value="alta" name="alta" >REGISTRATE</button>
  
   
-</form>
+</form:form>
 
 
 <center><h3> ${mensaje}</h3>

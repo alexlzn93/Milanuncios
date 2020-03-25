@@ -1,15 +1,15 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -163,16 +163,22 @@ public class MiControlador {
 
 	}
 	// OTRA MANERA DE RECOJER LOS PARAMETROS Y MANDARSELOS AL JSP CON MODEL
+	@GetMapping("/alta_user")
+	public String alta_user(@ModelAttribute Usuario usuario) {
+		return "alta_user";
+	}
+	
 
-	@GetMapping("/añadir_usuario")
-	public String añadir_usuario(HttpServletRequest request, Model model) {
+	@RequestMapping("/add_usuario")
+	public String añadir_usuario(HttpServletRequest request, Model model,@ModelAttribute Usuario usuario) {
 
 		// RECOJO LOS PARAMETROS PARA ENVIARLOS AL JSP CON REQUEST
 		String user = request.getParameter("user").toLowerCase();
 		String password = request.getParameter("password");
 		String email = request.getParameter("email").toLowerCase();
-
-		Usuario usuario = usuarioservice.buscar_by_user(user);
+System.out.println(usuario);
+		 
+		Usuario user1=usuarioservice.buscar_by_user(user);
 		
 		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
 		String letrasMinusculasNombre=user.substring(1);
@@ -180,8 +186,9 @@ public class MiControlador {
 		
 		// SI EL USUARIO NO EXISTE LLAMO AL SERVICE Y LE DOY DE ALTA
 
-		if (usuario == null) {
-			usuarioservice.alta_usuario(new Usuario(user, password, email));
+		if (user1 == null) {
+			usuarioservice.alta_usuario(usuario);
+			System.out.println(usuario);
 			model.addAttribute("mensaje", "Alta realizada correctamente");
 			model.addAttribute("bienvenido", "Sube tu anuncio y vendelo " + nombre + " !");
 			model.addAttribute("user", nombre);

@@ -42,9 +42,14 @@
   <li class="nav-item mx-2">
     <a class="btn btn-primary btn-sm" role="button" href="/lista_categoria">VER CATEGORIAS</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item mx-2">
     <a class="btn btn-primary btn-sm" role="button" href="/logueate">LOGUEATE</a>
-  </li></ul>
+  </li>
+   <li class="nav-item mx-2">
+    <a class="btn btn-primary btn-sm" role="button" href="alta_user">REGISTRATE</a>
+  </li>
+  </ul>
+  
    
 </div>
 <br>
