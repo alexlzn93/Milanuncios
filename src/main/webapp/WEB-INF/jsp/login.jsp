@@ -12,7 +12,7 @@
   </head>
   <body>
      <div class="container">
-      <form class="form-signin" method="post" action="/usuarioLogueado">
+      <form class="form-signin" method="post" action="usuarioLogueado">
       
         <div class="container-fluid"><h1>Please sign in</h1></div>
         

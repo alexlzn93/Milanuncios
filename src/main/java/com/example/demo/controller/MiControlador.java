@@ -23,7 +23,8 @@ import com.example.demo.model.Categoria;
 import com.example.demo.model.Usuario;
 
 @Controller
-public class MiControlador {
+@RequestMapping("/app")
+public class MiControlador { //mapeo de la pagina principal
 
 	@Autowired
 	IAnuncioSERVICE anuncioservice;
@@ -36,55 +37,12 @@ public class MiControlador {
 	// PAGINA PRINCIPAL
 	@RequestMapping("/index")
 	public String paginaPrincipal( Model model) {
-	
-		
 		List<Anuncio> listaAnuncios = anuncioservice.list_anuncios();
-		//System.out.println(listaAnuncios.toString());
-
 		model.addAttribute("anuncios", listaAnuncios);
-		
 		return "index";
 	}
 
-	// METODO PARA PINTAR EL JSP nuevo_anuncio
-	@RequestMapping("/publicar_anuncio")
-	public String add_anuncio() {
-		//iria a alta_user.jsp
-		return "nuevo_anuncio"; // 
-	}
-
-	// METODO QUE RECOJE LOS PARAMETROS PARA AGREGAR UN NUEVO ANUNCIO A LA PAGINA WEB
 	
-	/*@RequestMapping("/añadir_anuncio")
-	public String añadir_anuncio(HttpServletRequest request, Model model) {
-
-		String user = request.getParameter("user");
-		int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-		String titulo = request.getParameter("titulo");
-		String descripcion = request.getParameter("descripcion");
-		double precio = Double.parseDouble(request.getParameter("precio"));
-		int prioridad = Integer.parseInt(request.getParameter("prioridad"));
-		String fecha = request.getParameter("fecha").toLowerCase();
-
-		Anuncio anuncio = new Anuncio(user, id_categoria, titulo, descripcion, precio, prioridad, fecha);
-		anuncioservice.add_anuncio(anuncio);
-		model.addAttribute("anuncios", anuncioservice.list_anuncios());
-
-		System.out.println(user + id_categoria + titulo + descripcion + precio + fecha);
-
-		//IRIA A LA PAGINA DE INICIO DONDE SE LISTAN TODOS LOS ANUNCIOS
-		return "index";
-	}*/
-	@RequestMapping("/añadir_anuncio")
-	public String añadir_anuncio(Anuncio anuncio, Model model) {
-		//Ejemplo de DataBinding
-		//en el formulario los name mapean directamente con los atributos de la clase Anuncio, por eso el metodo
-		//recibe un Anuncio anuncio en vez de recoger los name con @RequestParam y crear un Anuncio
-		anuncioservice.add_anuncio(anuncio);
-		model.addAttribute("anuncios", anuncioservice.list_anuncios());
-
-		return "index";
-	}
 
 	@GetMapping("/lista_categoria")
 	public String list_categoria(Model model) {
@@ -162,78 +120,10 @@ public class MiControlador {
 		return mav;
 
 	}
-	// OTRA MANERA DE RECOJER LOS PARAMETROS Y MANDARSELOS AL JSP CON MODEL
-	@GetMapping("/alta_user")
-	public String alta_user(@ModelAttribute Usuario usuario) {
-		return "alta_user";
-	}
-	
-
-	@RequestMapping("/add_usuario")
-	public String añadir_usuario(HttpServletRequest request, Model model,@ModelAttribute Usuario usuario) {
-
-		// RECOJO LOS PARAMETROS PARA ENVIARLOS AL JSP CON REQUEST
-		String user = request.getParameter("user").toLowerCase();
-		String password = request.getParameter("password");
-		String email = request.getParameter("email").toLowerCase();
-System.out.println(usuario);
-		 
-		Usuario user1=usuarioservice.buscar_by_user(user);
-		
-		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
-		String letrasMinusculasNombre=user.substring(1);
-		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
-		
-		// SI EL USUARIO NO EXISTE LLAMO AL SERVICE Y LE DOY DE ALTA
-
-		if (user1 == null) {
-			usuarioservice.alta_usuario(usuario);
-			System.out.println(usuario);
-			model.addAttribute("mensaje", "Alta realizada correctamente");
-			model.addAttribute("bienvenido", "Sube tu anuncio y vendelo " + nombre + " !");
-			model.addAttribute("user", nombre);
 			
-			return "nuevo_anuncio";
-			// Y SI EXISTE
-		} else {
-			model.addAttribute("usuario", new Usuario(user, password, email));
-			model.addAttribute("password", password);
-			model.addAttribute("email", email);
-			model.addAttribute("mensaje", "Este usuario ya esta registrado");
-		
-			return "alta_user";
-		}
-		
 		
 
 
-	}
-	
-
-	@RequestMapping("/usuario_registrado")
-	public String usuario_registrado() {
-		return "usuario_registrado";
-	}
-
-	@GetMapping("/usario_existe")
-	public String usuario_existe(@RequestParam("user") String user, Model model) {
-		
-		Usuario usuario=usuarioservice.buscar_by_user(user);
-		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
-		String letrasMinusculasNombre=user.substring(1);
-		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
-		if(usuario==null) {
-			model.addAttribute("mensajeError", "No existe el usuario introducido");
-			return "usuario_registrado";
-		}else {
-		model.addAttribute("user", nombre);
-		model.addAttribute("bienvenido", "Publica otro anuncio " + nombre);
-		}
-
-		return "nuevo_anuncio";
-
-	}
-	
 	//EJEMPLOS DE CONSULTAS QUERY
 	@RequestMapping("/ver_anuncios_porConsulta")
 	public String consulta_anuncios() {
@@ -347,36 +237,4 @@ System.out.println(usuario);
 		return  "anunciosPrioridad";
 	}
 
-	@GetMapping("/logueate")
-	public String logueate() {
-		return "login";
-		
 	}
-	@PostMapping("/usuarioLogueado")
-	public String usuario_logueado(@RequestParam("user") String user, Model model) {
-		
-		Usuario usuario=usuarioservice.buscar_by_user(user);
-		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
-		String letrasMinusculasNombre=user.substring(1);
-		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
-		
-		if(usuario==null) {
-			model.addAttribute("mensajeAltaUser", "No existe el usuario introducido, registrate!!");
-			return "alta_user";
-		}else {
-			model.addAttribute("mensajeBienvenido", "Bienvenido de nuevo " + nombre);
-		}
-		
-		
-		return "logueate";
-	}
-	
-	
-	
-	
-	
-	
-
-	
-
-}

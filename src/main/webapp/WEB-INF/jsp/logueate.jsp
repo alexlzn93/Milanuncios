@@ -31,7 +31,7 @@
     <a class="nav-link active" href="/mis_anuncios">MIS ANUNCIOS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/publicar_anuncio">PUBLICA TU ANUNCIO</a>
+    <a class="nav-link" href="/anuncios/publicar_anuncio">PUBLICA TU ANUNCIO</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="totalAnunciosByCategoria">TOTAL ANUNCIOS DE CATEGORIA</a>
