@@ -24,7 +24,7 @@ import com.example.demo.model.Usuario;
 
 @Controller
 @RequestMapping("/app")
-public class MiControlador { //mapeo de la pagina principal
+public class HomeController { //mapeo de la pagina principal
 
 	@Autowired
 	IAnuncioSERVICE anuncioservice;
