@@ -11,11 +11,11 @@ import com.example.demo.model.Anuncio;
 
 public interface IAnuncioRepository extends CrudRepository<Anuncio, Integer> {
 
+	//EJEMPLOS DE QUERY METHODS
 	Anuncio findByTituloIgnoreCase(String titulo);
-
-	Anuncio findByUserIgnoreCase(String user);
-
+	List<Anuncio> findByUserIgnoreCase(String user);
 	List<Anuncio> findByPrecio(int precio);
+	List<Anuncio> findByPrecioBetween(int precio1, int precio2); //lista de anuncios entre dos precios
 	
 	
 	//CONSULTAS QUERY con QueryNativo que trabaja contra la tabla

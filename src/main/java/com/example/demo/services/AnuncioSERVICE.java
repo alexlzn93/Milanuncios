@@ -37,16 +37,14 @@ public class AnuncioSERVICE implements IAnuncioSERVICE {
 	
 	
 	@Override
-	public Anuncio buscar_por_user(String user) {
-		
+	public List<Anuncio> findByUser(String user) {
 		 return anunciorepository.findByUserIgnoreCase(user);
-	}
+		}
 
 
 
 	@Override
-	public Anuncio buscar_por_titulo(String titulo) {
-		
+	public Anuncio findByTitulo(String titulo) {
 		 return anunciorepository.findByTituloIgnoreCase(titulo);
 	}
 
@@ -102,6 +100,17 @@ public class AnuncioSERVICE implements IAnuncioSERVICE {
 		List<Anuncio> anuncios_byprioridad= entityManager.createQuery(consulta).setParameter("prioridad", prioridad).getResultList();
 		
 		return anuncios_byprioridad;
+	}
+
+	@Override
+	public List<Anuncio> findByPrecioBetween(int precio1, int precio2) {
+		List<Anuncio> listByPrecio=anunciorepository.findByPrecioBetween(precio1, precio2);
+		if(listByPrecio.isEmpty()) {
+			System.out.println("No hay anuncios entre estos precios " + precio1 + " " +precio2);
+			return null;
+		}else {
+			return listByPrecio;
+		}
 	}
 
 	

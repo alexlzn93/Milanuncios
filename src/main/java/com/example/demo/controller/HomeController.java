@@ -105,24 +105,19 @@ public class HomeController { //mapeo de la pagina principal
 	
 
 	@RequestMapping("/ver_anuncio_completo")
-	public ModelAndView ver_titulo(HttpServletRequest request) {
-		String titulo = request.getParameter("titulo");
-		Anuncio anuncio = anuncioservice.buscar_por_titulo(titulo);
-		ModelAndView mav = new ModelAndView();
+	public String ver_titulo(@RequestParam("titulo") String titulo, Model model) {
+		
+		Anuncio anuncio = anuncioservice.findByTitulo(titulo);
+	
 		if (anuncio == null) {
-			mav.addObject("anuncio", "No se ha encontrado ningun articulo");
+			model.addAttribute("anuncio", "No se ha encontrado ningun articulo");
 		} else {
-			mav.addObject("anuncio", anuncio.toString());
+			model.addAttribute("anuncio", anuncio.getTitulo() + " " + anuncio.getUser()
+			+ " " + anuncio.getDescripcion());
 		}
-
-		mav.setViewName("ver_anuncio");
-
-		return mav;
+		return "ver_anuncio";
 
 	}
-			
-		
-
 
 	//EJEMPLOS DE CONSULTAS QUERY
 	@RequestMapping("/ver_anuncios_porConsulta")

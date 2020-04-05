@@ -9,11 +9,12 @@ public interface IAnuncioSERVICE {
 
 	public List<Anuncio> list_anuncios();
 	public void add_anuncio(Anuncio anuncio);
-	public Anuncio buscar_por_titulo(String titulo);
-	public Anuncio buscar_por_user(String user);
+	public Anuncio findByTitulo(String titulo);
+	public List<Anuncio> findByUser(String user);
 	public List<Anuncio> busca_Anuncios_por_PalabraClave(String palabra);
 	public void eliminarAnuncio(int id_anuncio);
 	public List<Anuncio> anuncios_byPrioridad(int prioridad);
+	public List<Anuncio> findByPrecioBetween(int precio1, int precio2);
 	
 	
 	
