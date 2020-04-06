@@ -22,7 +22,7 @@
   
 	
 	<div class="container">	
-	<form role="form" method="get" action="busqueda_anuncio">
+	<form role="form" method="get" action="/anuncios/busqueda_anuncio">
 	<div class="form-group">
     <label for="user">¿QUE ARTICULO DESEA BUSCAR?</label>
     <input type="text" class="form-control" id="palabra" name="palabra"  placeholder="Introduzca palabra clave">
@@ -40,7 +40,7 @@
 
   <ul class="nav justify-content-center">
   <li class="nav-item mx-2">
-    <a class="btn btn-primary btn-sm" role="button" href="/lista_categoria">VER CATEGORIAS</a>
+    <a class="btn btn-primary btn-sm" role="button" href="/categorias/lista_categoria">VER CATEGORIAS</a>
   </li>
   <li class="nav-item mx-2">
     <a class="btn btn-primary btn-sm" role="button" href="/user/logueate">LOGUEATE</a>

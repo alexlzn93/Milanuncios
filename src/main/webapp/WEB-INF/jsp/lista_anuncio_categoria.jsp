@@ -72,7 +72,7 @@
 
     	
   <li class="nav-item">
-    <a href="index" class="btn btn-primary btn-sm" role="button" aria-pressed="true">IR AL MENU</a>
+    <a href="/app" class="btn btn-primary btn-sm" role="button" aria-pressed="true">IR AL MENU</a>
   </li>
 
     </ul>

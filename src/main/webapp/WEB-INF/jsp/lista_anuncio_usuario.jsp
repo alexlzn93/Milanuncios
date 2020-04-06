@@ -59,7 +59,7 @@
 					<td>${anuncio.precio}</td>
 					<td>${anuncio.prioridad}</td>
 					<td>${anuncio.fecha}</td>
-					<td><a href="/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar </a></td>
+					<td><a href="/anuncios/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar </a></td>
 					
 
 					

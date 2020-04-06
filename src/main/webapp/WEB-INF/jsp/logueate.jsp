@@ -28,19 +28,19 @@
 
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" href="/mis_anuncios">MIS ANUNCIOS</a>
+    <a class="nav-link active" href="/anuncios/mis_anuncios">MIS ANUNCIOS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/anuncios/publicar_anuncio">PUBLICA TU ANUNCIO</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="totalAnunciosByCategoria">TOTAL ANUNCIOS DE CATEGORIA</a>
+    <a class="nav-link" href="/anuncios/totalAnunciosByCategoria">TOTAL ANUNCIOS DE CATEGORIA</a>
   </li>
    <li class="nav-item">
-    <a class="nav-link" href="/nuevaCategoria">AÑADIR CATEGORIA</a>
+    <a class="nav-link" href="/categorias/nuevaCategoria">AÑADIR CATEGORIA</a>
   </li>
    <li class="nav-item">
-    <a class="nav-link" href="/anunciosPrioridad">BUSCAR POR PRIORIDAD</a>
+    <a class="nav-link" href="/anuncios/anunciosPrioridad">BUSCAR POR PRIORIDAD</a>
  
 </ul>
 
