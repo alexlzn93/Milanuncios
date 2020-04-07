@@ -121,6 +121,7 @@ public class AnuncioController {
 		public String numeroAnunciosDeCategoria(@RequestParam int id_categoria, Model model) {
 			
 			int totalAnuncios=anuncioservice.numeroDeAnunciosByCategoria(id_categoria);
+			List<Anuncio> anunciosbyCategoria= categoriaservice.lista_anuncios_por_categoria(id_categoria);
 			
 			System.out.println(id_categoria);
 			if(totalAnuncios==0) {
@@ -128,6 +129,8 @@ public class AnuncioController {
 				return "error";
 			}else {
 				model.addAttribute("numero", " Anuncios encontrados: "+ totalAnuncios);
+				model.addAttribute("id", id_categoria);
+				model.addAttribute("anuncios", anunciosbyCategoria);
 			}
 			
 			return "numeroAnunciosDeCategoria";

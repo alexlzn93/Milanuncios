@@ -30,7 +30,43 @@
 		
 			
   <center><h2>${numero }</h2></center>
-  <a class="nav-link" href="lista_anuncios_por_categoria?id_categoria=${categoria.id_categoria }">${numero }<span class="sr-only">(current)</span></a>
   
+   
+   <table class="table">
+		<thead>
+			<tr>
+				
+				<th scope="col">NOMBRE</th>
+				<th scope="col">IDCATEGORIA</th>
+				<th scope="col">TITULO</th>
+				<th scope="col">DESCRIPCION</th>
+				<th scope="col">PRECIO</th>
+				<th scope="col">PRIORIDAD</th>
+				<th scope="col">FECHA</th>
+				
+
+			</tr>
+		</thead>
+		<tbody>
+
+
+			<c:forEach var="anuncio" items="${anuncios }" varStatus="loop">
+
+				<tr>
+					<td>${anuncio.user}</td> 
+					<td>${anuncio.id_categoria}</td>
+					<td>${anuncio.titulo}</td>
+					<td>${anuncio.descripcion}</td> 
+					<td>${anuncio.precio}</td>
+					<td>${anuncio.prioridad}</td>
+					<td>${anuncio.fecha}</td>
+				</tr>
+
+			</c:forEach>
+
+		</tbody>
+
+	</table>
+	</div>
 </body>
 </html>
