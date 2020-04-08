@@ -46,7 +46,7 @@ public class AnuncioController {
 			//model.addAttribute("categorias",categoriaservice.list_categorias());->cuando id_categoria sea String
 			model.addAttribute("anuncios", anuncioservice.list_anuncios());
 
-			return "redirect:/app/index";
+			return "redirect:/app";
 		}
 
 		@RequestMapping("/mis_anuncios")
@@ -136,7 +136,7 @@ public class AnuncioController {
 			return "numeroAnunciosDeCategoria";
 		}
 		
-		@RequestMapping("/eliminarAnuncio")
+		@GetMapping("/eliminarAnuncio")
 		public String eliminarAnuncio(Model model,@RequestParam int id_anuncio,@RequestParam(name="user",required=false) String user) {
 			
 			anuncioservice.eliminarAnuncio(id_anuncio);
@@ -149,6 +149,14 @@ public class AnuncioController {
 				model.addAttribute("listado_anuncios", lista_anuncio_by_user);
 				return "lista_anuncio_usuario";
 			
+		}
+		//probar
+		@GetMapping("/editarAnuncio")
+		public String editarAnuncio(@RequestParam int id_anuncio, Model model) {
+			Anuncio anuncio= anuncioservice.findbyIdAnuncio(id_anuncio);
+			model.addAttribute("anuncio", anuncio);
+			System.out.println(anuncio);
+			return "nuevo_anuncio";
 		}
 		
 		@RequestMapping("/anunciosPrioridad")

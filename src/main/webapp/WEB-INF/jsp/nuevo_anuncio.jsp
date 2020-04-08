@@ -18,7 +18,7 @@
 <div class="container">
 <form:form action="/anuncios/añadir_anuncio" role="form" method="post" modelAttribute="anuncio" > <!-- modelAttribute="anuncio" -->
 
-	<!--<form:hidden path="id_anuncio"/>-->
+	<form:hidden path="id_anuncio"/>
     <div class="form-group"> <!-- Full Name -->
         <label for="full_name_id" class="font-weight-bold">NOMBRE</label>
         <form:input  class="form-control" id="user" path="user" value="${user}" placeholder="Introduzca tu nombre"/>

@@ -48,26 +48,16 @@
 			<c:forEach var="anuncio" items="${listado_anuncios }" varStatus="loop">
 
 				<tr>
-				
-					
-					
-					<td>${anuncio.id_anuncio}</td>
-					<td>${anuncio.user}</td> 
-					<td>${anuncio.id_categoria}</td>
-					<td>${anuncio.titulo}</td>
-					<td>${anuncio.descripcion}</td> 
-					<td>${anuncio.precio}</td>
-					<td>${anuncio.prioridad}</td>
-					<td>${anuncio.fecha}</td>
-					<td><a href="/anuncios/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Eliminar </a></td>
-					
-
-					
-
-
-
-
-
+			<td>${anuncio.id_anuncio}</td>
+			<td>${anuncio.user}</td> 
+			<td>${anuncio.id_categoria}</td>
+			<td>${anuncio.titulo}</td>
+			<td>${anuncio.descripcion}</td> 
+			<td>${anuncio.precio}</td>
+			<td>${anuncio.prioridad}</td>
+			<td>${anuncio.fecha}</td>
+			<td><a href="/anuncios/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">ELIMINAR </a></td>
+			<td><a href="/anuncios/editarAnuncio?id_anuncio=${anuncio.id_anuncio}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">EDITAR </a></td>
 				</tr>
 
 			</c:forEach>

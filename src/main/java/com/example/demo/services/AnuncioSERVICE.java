@@ -113,6 +113,20 @@ public class AnuncioSERVICE implements IAnuncioSERVICE {
 		}
 	}
 
+	@Override
+	public Anuncio findbyIdAnuncio(int id_anuncio) {
+		
+		Optional<Anuncio> anuncio= null;
+				anuncio=anunciorepository.findById(id_anuncio);
+		if(anuncio.isPresent()) {
+			return anuncio.get();
+			
+		}else {
+			return null;
+		}
+		
+	}
+
 	
 
 	

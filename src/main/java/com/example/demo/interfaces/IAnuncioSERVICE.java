@@ -8,6 +8,7 @@ import com.example.demo.model.Anuncio;
 public interface IAnuncioSERVICE {
 
 	public List<Anuncio> list_anuncios();
+	public Anuncio findbyIdAnuncio(int id_anuncio);
 	public void add_anuncio(Anuncio anuncio);
 	public Anuncio findByTitulo(String titulo);
 	public List<Anuncio> findByUser(String user);
