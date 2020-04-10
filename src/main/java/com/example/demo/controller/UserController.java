@@ -26,40 +26,12 @@ public class UserController {
 	public String alta_user(@ModelAttribute Usuario usuario) {
 		return "alta_user";
 	}
-	@RequestMapping("/add_usuario")
+	@PostMapping("/add_usuario")
 	public String añadir_usuario(HttpServletRequest request, Model model,@ModelAttribute Usuario usuario) {
 
-		// RECOJO LOS PARAMETROS PARA ENVIARLOS AL JSP CON REQUEST
-		String user = request.getParameter("user").toLowerCase();
-		String password = request.getParameter("password");
-		String email = request.getParameter("email").toLowerCase();
-		System.out.println(usuario);
-		 
-		Usuario user1=userservice.buscar_by_user(user);
+		userservice.alta_usuario(usuario);
 		
-		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
-		String letrasMinusculasNombre=user.substring(1);
-		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
-		
-		// SI EL USUARIO NO EXISTE LLAMO AL SERVICE Y LE DOY DE ALTA
-
-		if (user1 == null) {
-			userservice.alta_usuario(usuario);
-			System.out.println(usuario);
-			model.addAttribute("mensaje", "Alta realizada correctamente");
-			model.addAttribute("bienvenido", "Sube tu anuncio y vendelo " + nombre + " !");
-			model.addAttribute("user", nombre);
-			
-			return "nuevo_anuncio";
-			// Y SI EXISTE
-		} else {
-			model.addAttribute("usuario", new Usuario(user, password, email));
-			model.addAttribute("password", password);
-			model.addAttribute("email", email);
-			model.addAttribute("mensaje", "Este usuario ya esta registrado");
-		
-			return "alta_user";
-		}
+		return "redirect:/app";
 	}
 	
 
@@ -69,16 +41,19 @@ public class UserController {
 		
 	}
 	@PostMapping("/usuarioLogueado")
-	public String usuario_logueado(@RequestParam("user") String user, Model model) {
+	public String usuario_logueado(@RequestParam("user") String user,@RequestParam("password")
+	String password, Model model) {
 		
-		Usuario usuario=userservice.buscar_by_user(user);
+		//Usuario usuario=userservice.buscar_by_user(user);
+		System.out.println(user + " " + password);
+		Usuario usuario= userservice.findByUserAndPassword(user, password);
 		String letraMayusculaNombre= user.substring(0, 1).toUpperCase();//primera letra mayuscula
 		String letrasMinusculasNombre=user.substring(1);
 		String nombre=letraMayusculaNombre+letrasMinusculasNombre;
 		
 		if(usuario==null) {
-			model.addAttribute("mensajeAltaUser", "No existe el usuario introducido, registrate!!");
-			return "alta_user";
+			model.addAttribute("mensajeError", "Introduzca sus datos correctamente");
+			return "login";
 		}else {
 			model.addAttribute("mensajeBienvenido", "Bienvenido de nuevo " + nombre);
 		}

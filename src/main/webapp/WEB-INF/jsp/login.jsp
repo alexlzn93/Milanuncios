@@ -11,6 +11,11 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
   </head>
   <body>
+  	<div class="container-fluid">
+ <div class="alert alert-success" role="alert">
+ ${mensajeError}
+</div> 
+  </div>
      <div class="container">
       <form class="form-signin" method="post" action="usuarioLogueado">
       

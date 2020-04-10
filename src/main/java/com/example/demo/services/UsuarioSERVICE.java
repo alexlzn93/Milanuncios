@@ -87,6 +87,12 @@ public class UsuarioSERVICE implements IUsuarioSERVICE {
 		
 	}
 
+	@Override
+	public Usuario findByUserAndPassword(String user, String password) {
+		
+		return usuariorepository.findByUserAndPassword(user, password);
+	}
+
 
 
 

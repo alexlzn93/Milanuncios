@@ -15,6 +15,7 @@ public interface IUsuarioSERVICE {
 	public void alta_usuario(Usuario user);
 
 	public Usuario buscar_by_user(String user);
+	public Usuario findByUserAndPassword(String user, String password);
 	
 	
 	

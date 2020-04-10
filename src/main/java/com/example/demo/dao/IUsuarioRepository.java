@@ -9,6 +9,7 @@ import com.example.demo.model.Usuario;
 //CrudRepository<Beans,tipo de dato del campo clave(user)>
 @Repository
 public interface IUsuarioRepository extends CrudRepository<Usuario, String> { 
-																				 
+	
+	public Usuario findByUserAndPassword(String user, String password);
 }
 
