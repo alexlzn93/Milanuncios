@@ -56,7 +56,8 @@
 			<td>${anuncio.precio}</td>
 			<td>${anuncio.prioridad}</td>
 			<td>${anuncio.fecha}</td>
-			<td><a href="/anuncios/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">ELIMINAR </a></td>
+			<td><a href="/anuncios/eliminarAnuncio?id_anuncio=${anuncio.id_anuncio}&user=${anuncio.user}" onclick='return confirm("¿Estas seguro?")'
+			class="btn btn-primary btn-sm" role="button" aria-pressed="true">ELIMINAR </a></td>
 			<td><a href="/anuncios/editarAnuncio?id_anuncio=${anuncio.id_anuncio}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">EDITAR </a></td>
 				</tr>
 
